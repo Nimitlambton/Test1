@@ -30,6 +30,16 @@ public class student {
     int withacc;
     int withm;
 
+    int Result;
+
+    public int getResult() {
+        return Result;
+    }
+
+    public void setResult(int result) {
+        Result = result;
+    }
+
     public int getWithacc() {
         return withacc;
     }

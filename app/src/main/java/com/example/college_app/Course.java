@@ -23,7 +23,7 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
   RadioGroup type;
   RadioButton rbug ,rbg;
   CheckBox cbac, cbmi;
-  TextView result;
+  TextView result , total;
   //Student class
     student newstudent;
 
@@ -43,7 +43,7 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
 
         newstudent = new student();
 
-        //spinner
+
 
         spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -76,6 +76,8 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
         cbac = findViewById(R.id.cbac);
         cbmi  = findViewById(R.id.cbmi);
         result = findViewById(R.id.result);
+        total = findViewById(R.id.total);
+
     }
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -136,7 +138,7 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
         }
 
 
-        result.setText("your course is  " +newstudent.getCourse()+" duration is = " + newstudent.getDur() + "  fees" + newstudent.getFee());
+        result.setText("your course is  " +newstudent.getCourse()+" duration is = " + newstudent.getDur()+"weeks"+ "  fees $" + newstudent.getFee());
 
 
 
@@ -167,7 +169,7 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
             case R.id.cbac:
                 if (checked){
 
-                    newstudent.setWithacc(20);
+                    newstudent.setWithacc(1000);
                 }
 
                 else{
@@ -179,7 +181,7 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
             case R.id.cbmi:
                 if (checked){
 
-                    newstudent.setWithm(20);
+                    newstudent.setWithm(700);
 
             }
                 else
@@ -191,12 +193,16 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
 
         }
 
+    total.setText("Total cost with acomodationa and insurance $" +calc());
+
 
 
     }
 
-
-
+    public double calc(){
+        double  total_price = newstudent.getFee() + newstudent.getWithacc() + newstudent.getWithm();
+        return  total_price;
+    }
 
 
 
