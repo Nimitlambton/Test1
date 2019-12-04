@@ -57,6 +57,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="52dp"
+        android:onClick="oncheck"
         android:text="Accommodation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
@@ -67,6 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
+
+        android:onClick="oncheck"
+
         android:text="Medical Insurance."
         app:layout_constraintBaseline_toBaselineOf="@+id/cbac"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -92,4 +96,15 @@
         android:text="add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.college_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +23,10 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
   RadioGroup type;
   RadioButton rbug ,rbg;
   CheckBox cbac, cbmi;
+  TextView result;
+  //Student class
+    student newstudent;
+
 
 
     @Override
@@ -29,9 +34,14 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
+
+
+
         welcome1 = findViewById(R.id.welcome);
         welcome1.setText("welcome  " + MainActivity.Studentname);
 
+
+        newstudent = new student();
 
         //spinner
 
@@ -41,7 +51,7 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
 
         ArrayList<String> spinnerdata = new ArrayList<String>();
         spinnerdata.add("Java");
-        spinnerdata.add("iOS");
+        spinnerdata.add("Swift");
         spinnerdata.add("Swift");
         spinnerdata.add("Android");
         spinnerdata.add("Database");
@@ -56,33 +66,85 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
 
 
        // radiobutton
-
        rbug = findViewById(R.id.rb_ug);
        rbg = findViewById(R.id.rb_g);
 
        //radioGroup
-
         type= findViewById(R.id.type);
 
         //checkbox
-
         cbac = findViewById(R.id.cbac);
         cbmi  = findViewById(R.id.cbmi);
-
-
-
-
-
-
-
+        result = findViewById(R.id.result);
     }
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+
         String ss = adapterView.getItemAtPosition(i).toString();
 
-        System.out.println(ss);
+        //System.out.println("userintput"+ss);
+
+        newstudent.setCourse(ss);
+
+        result.setText("your course is  " +newstudent.getCourse());
+
+       if (ss.equals("Swift")){
+
+           newstudent.setDur(6);
+            newstudent.setFee(1500);
+        }
+       result.setText("your course is  " +newstudent.getCourse()+"duration is = " + newstudent.getDur() + "  fees" + newstudent.getFee() );
+
+
+        if (ss.equals("Android")){
+
+            newstudent.setDur(7);
+            newstudent.setFee(1350);
+
+        }
+
+
+        result.setText("your course is  " +newstudent.getCourse()+"duration is = " + newstudent.getDur()+ "  fees" + newstudent.getFee() );
+
+
+        if (ss.equals("Java")){
+
+            newstudent.setDur(6);
+            newstudent.setFee(1300);
+        }
+
+
+        result.setText("your course is  " +newstudent.getCourse()+" duration is = " + newstudent.getDur() + "  fees" + newstudent.getFee());
+
+
+
+        if (ss.equals("Swift")){
+
+            newstudent.setDur(5);
+            newstudent.setFee(1300);
+        }
+
+
+        result.setText("your course is  " +newstudent.getCourse()+"duration is = " + newstudent.getDur() + "  fees" + newstudent.getFee());
+
+
+        if (ss.equals("Database")){
+
+            newstudent.setDur(4);
+            newstudent.setFee(1000);
+        }
+
+
+        result.setText("your course is  " +newstudent.getCourse()+" duration is = " + newstudent.getDur() + "  fees" + newstudent.getFee());
+
+
+
     }
+
+
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -93,4 +155,51 @@ public class Course extends AppCompatActivity implements AdapterView.OnItemSelec
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
+    public void oncheck(View view) {
+
+        Boolean checked = ((CheckBox) view).isChecked();
+
+
+        switch(view.getId()){
+
+            case R.id.cbac:
+                if (checked){
+
+                    newstudent.setWithacc(20);
+                }
+
+                else{
+
+                    newstudent.setWithacc(0);
+                }
+
+
+            case R.id.cbmi:
+                if (checked){
+
+                    newstudent.setWithm(20);
+
+            }
+                else
+                {
+                    newstudent.setWithm(0);
+                    
+                }
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
 }
